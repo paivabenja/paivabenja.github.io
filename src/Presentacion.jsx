@@ -1,6 +1,7 @@
 import escudo from "./assets/escudoPfc.png";
 import pepillo from "./assets/pepillo.webp";
 import arbitro from "./assets/arbitro.png";
+import { useState } from "react";
 
 const Presentacion = () => {
   const handleClick = () => {
@@ -12,11 +13,11 @@ const Presentacion = () => {
   };
 
   return (
-    <div className="grid w-full bg-gradient-to-b from-red-900 to-black to-80%">
-      <div className="flex flex-col items-center text-white">
-        <div className="flex justify-center flex-col sm:flex-row sm:justify-between items-center mt-8 mb-12">
-          <img src={pepillo} className="w-72" />
-          <div className="duration-150 flex flex-col items-center hover:scale-105 hover:text-red-500">
+    <div className="grid w-full h-full bg-gradient-to-b from-red-900 to-neutral-900 to-80%">
+      <div className="flex flex-col items-center text-neutral-300">
+        <div className="flex w-full justify-center items-center overflow-hidden lg:justify-between sm:flex-row  ">
+          <img src={pepillo} className="hidden lg:block w-72" />
+          <div className="duration-150 mb-16 flex flex-col items-center hover:scale-105 hover:text-red-500">
             <img
               src={escudo}
               alt=""
@@ -27,10 +28,13 @@ const Presentacion = () => {
             </h1>
             <h2>El más grande del Challao</h2>
           </div>
-          <img src={arbitro} className="w-72" />
+          <img src={arbitro} className="hidden lg:block w-72" />
         </div>
-        <button onClick={handleClick} className="text-xl text-center">
-          Más info
+        <button
+          onClick={handleClick}
+          className="text-xl text-center border-2 rounded-lg border-neutral-300 py-1 px-4"
+        >
+          Asociarse
         </button>
       </div>
     </div>
