@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 
 const Asociarse = () => {
+  const [visible, setVisible] = useState("hidden");
+  const [data, setData] = useState({});
   const inputStyle =
     "duration-300 bg-neutral-900 p-2 rounded-md border text-neutral-300 " +
     "border-neutral-600 m-2 placeholder:text-neutral-600 " +
@@ -9,25 +11,22 @@ const Asociarse = () => {
     "enabled:outline-nonefocus:outline-none enabled:outline-none " +
     "col-span-2 lg:col-span-1 ";
 
-
   const handleIgChange = (e) => {
     if (e.target.value[0] === "@") return;
     e.target.value = "@" + e.target.value;
   };
-  const [formValidation, setFormValidation] = useState({
-    name: false,
-    lastname: false,
-    insta: false,
-    number: false,
-    mail: false,
-    checkbox: [false, false, false, false],
-  });
+
+  const handleFormChange = (e) => {
+    e.preventDefault();
+    const name = e.target.name;
+    const value = e.target.value;
+    let newData = data;
+    newData[name] = value;
+  };
 
   return (
     <div className="text-neutral-300 h-full text-center w-full bg-neutral-950 flex flex-col items-center justify-center">
-      <form
-        className="grid grid-cols-2 gap-2 p-8 rounded-2xl"
-      >
+      <form className="grid grid-cols-2 gap-2 p-8 rounded-2xl">
         <input
           type="text"
           name="name"
@@ -51,22 +50,16 @@ const Asociarse = () => {
         />
 
         <input
-          type="text"
+          type="number"
           name="phone"
           className={inputStyle}
           placeholder="Ingrese su teléfono"
         />
 
         <input
-          type="text"
+          type="email"
           name="mail"
-          className={
-            formValidation.mail
-              ? inputStyle +
-                "lg:col-span-2 border-green-500 focus:border-green-500"
-              : inputStyle +
-                "lg:col-span-2  border-red-500 focus:border-red-500"
-          }
+          className={inputStyle + "lg:col-span-2"}
           placeholder="Ingrese su correo electrónico"
         />
 
@@ -95,9 +88,9 @@ const Asociarse = () => {
           <label className="my-2 mx-4 text-left">
             Me comprometo a seguir a PórticoFC a todos lados
           </label>
-          <input type="checkbox" />
+          <input type="checkbox" name="meComprometo" />
         </div>
-        <div className="col-span-2 flex justify-center">
+        <div className="col-span-2 flex flex-col items-center justify-center">
           <input
             type="submit"
             name="submit"
@@ -107,6 +100,9 @@ const Asociarse = () => {
             }
             value="Asociarse"
           />
+          <div className={visible + " text-red-600"}>
+            Hacé las cosas bien culiado
+          </div>
         </div>
       </form>
     </div>
