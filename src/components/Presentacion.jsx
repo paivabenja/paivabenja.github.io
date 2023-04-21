@@ -1,6 +1,6 @@
-import escudo from "./assets/escudoPfc.png";
-import pepillo from "./assets/pepillo.webp";
-import arbitro from "./assets/arbitro.png";
+import escudo from "../assets/escudoPfc.png";
+import pepillo from "../assets/pepillo.webp";
+import arbitro from "../assets/arbitro.png";
 import { Link } from "react-router-dom";
 
 const Presentacion = () => {

@@ -1,15 +1,11 @@
 import { useEffect, useRef, useState } from "react";
+import escudo from "../assets/escudoPfc.png";
+import { Link } from "react-router-dom";
 
 const Asociarse = () => {
   const [visible, setVisible] = useState("hidden");
   const [data, setData] = useState({});
   const inputStyle =
-    "duration-300 bg-neutral-900 p-2 rounded-md border text-neutral-300 " +
-    "border-neutral-600 m-2 placeholder:text-neutral-600 " +
-    "disabled:submit:border-neutral-600 enabled:hover:border-neutral-300 " +
-    "focus:border-neutral-300 focus:outline-none " +
-    "enabled:outline-nonefocus:outline-none enabled:outline-none " +
-    "col-span-2 lg:col-span-1 ";
 
   const handleIgChange = (e) => {
     if (e.target.value[0] === "@") return;
@@ -18,15 +14,24 @@ const Asociarse = () => {
 
   const handleFormChange = (e) => {
     e.preventDefault();
+    console.log("handleFormChange");
     const name = e.target.name;
     const value = e.target.value;
+    const type = e.target.type;
     let newData = data;
-    newData[name] = value;
+    newData[name] = { type, value };
+    setData(newData);
   };
 
   return (
-    <div className="text-neutral-300 h-full text-center w-full bg-neutral-950 flex flex-col items-center justify-center">
-      <form className="grid grid-cols-2 gap-2 p-8 rounded-2xl">
+    <div className="overflow-auto text-neutral-300 h-full text-center w-full bg-neutral-950 flex flex-col items-center justify-start">
+<Link to="/">
+        <img src={escudo} className="duration-300 mt-8 h-16 lg:mt-8 lg:h-32" />
+      </Link>
+      <form
+        onChange={handleFormChange}
+        className="grid grid-cols-2 gap-2 p-8 rounded-2xl"
+      >
         <input
           type="text"
           name="name"
