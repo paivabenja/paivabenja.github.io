@@ -25,7 +25,7 @@ const Asociarse = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(data);
-    if (Object.values(data) < 9) {
+    if (Object.values(data).length < 9) {
       console.log("No deberia pasar nada");
       setWarning("Debe llenar todos los campos del formulario");
       setVisible("block");
