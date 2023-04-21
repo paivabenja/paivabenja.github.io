@@ -5,6 +5,38 @@
 @layer utilities {
   .input {
     transition-duration: 300ms;
+    background-color: #171717;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border-radius: 0.375rem;
+    border: solid 1px #525252;
+  }
+
+  .input::placeholder {
+    color: #525252;
+  }
+
+  .input:enabled {
+    outline: none;
+  }
+
+  .input[type="submit"]:disabled {
+    border: solid 1px #525252;
+  }
+
+  .input:enabled:hover {
+    border: solid 1px #d4d4d4;
+  }
+
+  .input:focus {
+    border: solid 1px #d4d4d4;
+    outline: none;
+  }
+
+  @media (max-width: 1000px) {
+    .input {
+      grid-column: span 2;
+    }
   }
 }
 
@@ -31,6 +63,6 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
