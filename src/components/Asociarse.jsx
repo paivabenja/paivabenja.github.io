@@ -6,13 +6,6 @@ const Asociarse = () => {
   const [warning, setWarning] = useState("");
   const [visible, setVisible] = useState("hidden");
   const [data, setData] = useState({});
-  const inputStyle =
-    "duration-300 bg-neutral-900 p-2 rounded-md border text-neutral-300 " +
-    "border-neutral-600 m-2 placeholder:text-neutral-600 " +
-    "disabled:submit:border-neutral-600 enabled:hover:border-neutral-300 " +
-    "focus:border-neutral-300 focus:outline-none " +
-    "enabled:outline-none " +
-    "col-span-2 lg:col-span-1 ";
 
   const handleIgChange = (e) => {
     if (e.target.value[0] === "@") return;
@@ -33,6 +26,7 @@ const Asociarse = () => {
     e.preventDefault();
     console.log(data);
     if (Object.values(data) < 9) {
+      console.log("No deberia pasar nada");
       setWarning("Debe llenar todos los campos del formulario");
       setVisible("block");
       return;
